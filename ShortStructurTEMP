@@ -1,0 +1,61 @@
+Berdasarkan materi pada dokumen tersebut, materi akuntansi investasi instrumen utang (Debt Investments) dapat dibagi menjadi 7 topik utama yang dirancang khusus untuk video pendek (shorts/overview) berdurasi sekitar 1 hingga 1,5 menit.
+Berikut adalah rincian pembagian topik beserta poin-poin penting yang perlu disampaikan:
+Video 1: Pengantar Investasi & 3 Kategori Surat Utang
+ * Estimasi Durasi: 1 Menit – 1 Menit 15 Detik
+ * Poin Kunci Materi:
+   * Alasan Berinvestasi: Perusahaan menginvestasikan kelebihan uang tunai untuk menghasilkan pendapatan bunga/dividen dan mendukung strategi bisnis.
+   * 3 Kategori Investasi Utang:
+     * Held-for-Collection (HFC): Dibeli untuk mendapatkan bunga sampai jatuh tempo; diukur pada Amortised Cost; tidak disesuaikan ke harga pasar; dicatat sebagai Non-Current Asset.
+     * Trading: Diperdagangkan aktif untuk keuntungan jangka pendek; diukur pada Fair Value (FVTPL); perubahan harga pasar masuk ke Laporan Laba/Rugi (Income); dicatat sebagai Current Asset.
+     * Held-for-Collection and Selling (HFCS / Non-Trading): Untuk bunga dan sewaktu-waktu dijual; diukur pada Fair Value (FVOCI); perubahan harga pasar masuk ke Ekuitas/OCI.
+ * Alur Video: Jelaskan secara visual perbedaan tujuan memegang obligasi dan bagaimana tujuan tersebut menentukan metode akuntansinya.
+Video 2: Pencatatan Pembelian & Pendapatan Bunga Obligasi (Nilai Par)
+ * Estimasi Durasi: 1 Menit – 1 Menit 15 Detik
+ * Poin Kunci Materi:
+   * Jurnal Pembelian: Mencatat debit Debt Investments dan kredit Cash.
+   * Perlakuan Biaya Transaksi: Biaya broker/komisi langsung digabungkan ke harga perolehan investasi.
+   * Bunga Akrual (31 Desember): Dihitung dari \text{Nilai Nominal} \times \text{Kupon} \times \text{Proporsi Waktu}. Jurnal: Debit Interest Receivable dan Kredit Interest Revenue.
+   * Penerimaan Bunga: Mengkredit Interest Receivable yang telah diakui sebelumnya dan mengakui kas.
+ * Alur Video: Tampilkan alur transaksi dari pembelian tunai, penyesuaian akhir tahun saat kupon belum cair, hingga pelunasan kupon di awal tahun berikutnya.
+Video 3: Penyesuaian Nilai Wajar Akhir Tahun (Fair Value Adjustment)
+ * Estimasi Durasi: 1 Menit 20 Detik
+ * Poin Kunci Materi:
+   * Kategori HFC tidak memerlukan jurnal penyesuaian nilai wajar di akhir tahun.
+   * Kategori Trading vs HFCS/Non-Trading: Keduanya menggunakan akun Fair Value Adjustment di neraca, tetapi berbeda penempatan untung/ruginya:
+     * Trading: Lawannya adalah Unrealized Gain/Loss - Income (masuk Laporan Laba Rugi pada Other Income/Expense).
+     * HFCS/Non-Trading: Lawannya adalah Unrealized Gain/Loss - Equity (masuk Comprehensive Income / Ekuitas).
+   * Mekanisme Saldo Berjalan: Jurnal penyesuaian tahun berikutnya dihitung berdasarkan selisih saldo akun penyesuaian yang sudah ada sebelumnya dengan target nilai wajar baru.
+ * Alur Video: Berikan simulasi visual neraca saat harga obligasi turun dan naik kembali di tahun berikutnya.
+Video 4: Penjualan Investasi Obligasi (Pada Nilai Par)
+ * Estimasi Durasi: 1 Menit
+ * Poin Kunci Materi:
+   * Langkah Kritis Sebelum Penjualan: Harus mencatat penerimaan/pengakuan pendapatan bunga berjalan hingga tanggal penjualan sebelum membukukan pelepasan pokok.
+   * Perhitungan Gain/Loss: Membandingkan Harga Jual Bersih (Harga Jual dikurangi fee broker) dengan Nilai Buku obligasi.
+   * Pencatatan Jurnal: Debit Cash (harga bersih), Kredit Debt Investments (sebesar nilai tercatat/nominal), dan selisihnya diakui sebagai Gain/Loss on Sale of Investment.
+ * Alur Video: Tunjukkan urutan 2 jurnal wajib: jurnal bunga berjalan terlebih dahulu, lalu jurnal penerimaan kas dari pelepasan investasi.
+Video 5: Investasi Obligasi dengan Diskon (Metode Bunga Efektif)
+ * Estimasi Durasi: 1 Menit 30 Detik
+ * Poin Kunci Materi:
+   * Penyebab Diskon: Suku bunga pasar (yield) lebih tinggi daripada bunga kupon obligasi.
+   * Harga Beli (Present Value): Total PV nilai pokok ditambah PV pembayaran anuitas bunga.
+   * Mekanisme Amortisasi Diskon: Nilai buku investasi secara bertahap bertambah menuju nilai nominal.
+   * Jurnal Bunga: Kas diterima (berdasarkan kupon nominal) lebih kecil dari Interest Revenue (berdasarkan yield \times nilai buku); selisihnya didebit ke Debt Investments sebagai amortisasi.
+   * Penyajian Laporan Keuangan: Dilaporkan di neraca sebesar nilai buku teramortisasi (amortized cost).
+ * Alur Video: Tampilkan tabel amortisasi singkat untuk memperlihatkan bagaimana nilai buku perlahan naik mendekati nominal par saat jatuh tempo.
+Video 6: Investasi Obligasi dengan Premium (Metode Bunga Efektif)
+ * Estimasi Durasi: 1 Menit 30 Detik
+ * Poin Kunci Materi:
+   * Penyebab Premium: Suku bunga pasar (yield) lebih rendah daripada bunga kupon obligasi.
+   * Harga Beli (Present Value): Obligasi dibeli di atas nilai nominalnya.
+   * Mekanisme Amortisasi Premium: Nilai buku investasi secara bertahap menurun menuju nilai nominal par.
+   * Jurnal Bunga: Kas yang diterima lebih besar daripada Interest Revenue; selisihnya dikreditkan ke Debt Investments untuk menurunkan nilai buku.
+   * Penyajian Laporan Keuangan: Di neraca dicatat sebagai aset jangka panjang sebesar nilai buku yang telah berkurang.
+ * Alur Video: Berikan perbandingan visual berlawanan dengan obligasi diskon: kas masuk lebih besar, tetapi pendapatan bunga riil lebih kecil karena adanya amortisasi premium.
+Video 7: Penjualan Obligasi Diskon/Premium Sebelum Jatuh Tempo
+ * Estimasi Durasi: 1 Menit 15 Detik
+ * Poin Kunci Materi:
+   * Penjualan sebelum jatuh tempo memerlukan pembaruan nilai buku (Carrying Amount) obligasi per tanggal transaksi.
+   * Langkah 1: Menjurnal bunga berjalan dan amortisasi parsial (proporsional bulan) dari tanggal pembayaran kupon terakhir hingga tanggal penjualan.
+   * Langkah 2: Menghitung Nilai Buku Terkini (Nilai buku awal periode ditambah/dikurangi amortisasi parsial).
+   * Langkah 3: Menghitung keuntungan/kerugian penjualan dari selisih harga jual bersih obligasi dengan nilai buku terkini tersebut.
+ * Alur Video: Fokus pada cara menghitung nilai buku obligasi terkini sebelum menentukan apakah penjualan tersebut menghasilkan keuntungan atau kerugian.
