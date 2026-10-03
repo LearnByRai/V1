@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MindMap - Search Theory dan Informasi Asimetris</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f6fb;--ink:#1e2536;--root:#1e2a4a;--L2:93%;--T2:22%;--L3:97%;--T3:25%;--dot:rgba(30,40,80,.15);--panel:rgba(255,255,255,.6)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1120;--ink:#e6e9f4;--root:#33437a;--L2:26%;--T2:90%;--L3:17%;--T3:88%;--dot:rgba(255,255,255,.11);--panel:rgba(28,35,62,.6)}}
+:root[data-theme="dark"]{--bg:#0d1120;--ink:#e6e9f4;--root:#33437a;--L2:26%;--T2:90%;--L3:17%;--T3:88%;--dot:rgba(255,255,255,.11);--panel:rgba(28,35,62,.6)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{height:100%;margin:0}
+*{-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--ink);font:13px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+#v{position:relative;width:100%;height:100%;overflow:hidden;touch-action:none;cursor:grab}
+#v:active{cursor:grabbing}
+#bg{position:absolute;inset:0;width:100%;height:100%}
+#wd{position:absolute;left:0;top:0;transform-origin:0 0}
+#es{position:absolute;left:0;top:0;width:1px;height:1px;overflow:visible}
+#es path{fill:none;stroke-linecap:round}
+.w1{stroke-width:4px}.w2{stroke-width:3px}.w3{stroke-width:2px}
+.n{position:absolute;left:0;top:0;box-sizing:border-box;padding:10px 14px;border-radius:14px;opacity:0;cursor:pointer;user-select:none;-webkit-user-select:none;box-shadow:0 8px 18px -6px hsl(var(--hu) 60% 25% / .42),0 2px 5px rgba(0,0,0,.1)}
+.n:hover{filter:brightness(1.05)}
+.n.f{animation:fl .35s}
+@keyframes fl{50%{filter:brightness(1.22)}}
+.d0{background:var(--root);color:#fff;font-weight:700;font-size:16px;text-align:center;border-radius:18px;padding:14px 18px;box-shadow:0 12px 28px -8px rgba(0,0,0,.45)}
+.d1{background:hsl(var(--hu) 72% 45%);color:#fff;font-weight:700;font-size:14px}
+.d2{background:hsl(var(--hu) 70% var(--L2));color:hsl(var(--hu) 55% var(--T2));font-weight:600}
+.d3{background:hsl(var(--hu) 45% var(--L3));color:hsl(var(--hu) 18% var(--T3));font-size:12.5px}
+sub{font-size:.75em;line-height:0}
+.b{position:absolute;display:grid;place-items:center;font-style:normal;font-weight:700;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.b{right:-11px;top:50%;width:22px;height:22px;margin-top:-11px;background:#fff;color:hsl(var(--hu) 65% 38%);font-size:11px}
+.n.f .b{animation:pp .35s}
+@keyframes pp{50%{transform:scale(1.35)}}
+#bar{position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:flex-end;gap:8px;pointer-events:none}
+.pl{pointer-events:auto;background:var(--panel);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:0;border-radius:999px;padding:8px 14px;box-shadow:0 4px 14px rgba(0,0,0,.16);font:600 12.5px system-ui,sans-serif;color:var(--ink)}
+button.pl{cursor:pointer}
+#z{position:absolute;right:10px;bottom:14px;display:flex;flex-direction:column;gap:8px}
+#z button{width:40px;height:40px;padding:0;font-size:18px}
+#rs{width:40px;height:40px;padding:0;font-size:18px}
+</style>
+</head>
+<body>
+<div id="v">
+<svg id="bg"><defs><pattern id="p" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="13" cy="13" r="1.5" style="fill:var(--dot)"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+<div id="wd"><svg id="es"></svg></div>
+<div id="bar"><button class="pl" id="rs" aria-label="Ganti tema">○</button></div>
+<div id="z"><button class="pl" data-z="1.3">+</button><button class="pl" data-z=".77">−</button><button class="pl" data-z="0">⤢</button></div>
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg',KEY='mm-infoasimetris-v1',WS=[180,190,230,280],HUE=[210,28,145,268,335,180];
+const N=(t,...c)=>({t,c:c.map(x=>typeof x=='string'?{t:x,c:[]}:x)});
+const root=N('Search Theory &amp; Informasi Asimetris',
+N('Search Theory',
+ N('Economics of Search','Konsumen mencari (<i>search</i>) sampai dapat harga murah, kualitas bagus, dsb.','Pencarian mengorbankan biaya &amp; waktu = <b>search cost</b> (internet menurunkannya)','Search jika <b>MB &gt; MC</b>: MB = selisih harga lebih murah; MC = <i>search cost</i>'),
+ N('Lowest Expected Price','Makin banyak search, makin besar peluang dapat harga terendah','Jika harga &amp; pencarian <i>uniform</i>: <b>A + (B − A) ÷ (n + 1)</b>','A = harga terendah; B − A = <i>range</i>; n = jumlah search','n = 1 → A + (B−A)/2; n = 2 → /3; n = 3 → /4'),
+ N('Contoh Soal: Portable TV','5 tipe penjual: $60, $80, $100, $120, $140 → range = $80','Harga ekspektasi n = 1…5: <b>$100; $86,67; $80; $76; $73,33</b>','MB tiap tambahan search: <b>$13,33; $6,67; $4; $2,67</b>','MC = $3 → search <b>4 kali</b> (MB $4 &gt; $3; MB berikutnya $2,67 &lt; $3)')),
+N('Informasi Asimetris',
+ N('Konsep','Pasar efisien: semua pihak punya akses &amp; tingkat informasi yang sama','<b>Informasi asimetris</b>: penjual &amp; pembeli punya informasi berbeda tentang pasar'),
+ N('Contoh','Penjual lebih tahu kualitas barang daripada pembeli','Pemegang polis lebih tahu kesehatannya daripada perusahaan asuransi','Pencari kerja lebih tahu keahliannya daripada pemilik perusahaan'),
+ N('Konsekuensi','<i>Hidden characteristic</i> (karakteristik tak diketahui satu pihak) → <b>adverse selection</b>','<i>Hidden action</i> (tindakan tak diketahui satu pihak) → <b>moral hazard</b>')),
+N('Adverse Selection',
+ N('Konsep','Ada <i>hidden characteristic</i> yang merugikan/tak diinginkan pihak yang tak terinformasi','Pasar didominasi produk berkarakteristik jelek; ekstrem: tak ada transaksi','Contoh: pasar mobil bekas &amp; asuransi'),
+ N('Mobil Bekas: Angka','Nilai pembeli: bagus 10.000, jelek 3.000; nilai penjual: 8.000 &amp; 2.000','Peluang 0,5 : 0,5 → <i>expected value</i> = <b>6.500</b>','6.500 &lt; nilai penjual mobil bagus (8.000) → mobil bagus tak dijual','Yang beredar hanya mobil jelek (<i>lemon</i>) → <b>adverse selection</b>'),
+ N('Mobil Bekas: Grafik','Info simetris: kualitas tinggi 50.000 unit @ $10.000; rendah 50.000 unit @ $5.000','Info asimetris: pembeli anggap kualitas rata-rata (D<sub>M</sub>) → tinggi 25.000, rendah 75.000','Pembeli sadar mayoritas jelek → permintaan turun ke D<sub>LM</sub> → mobil bagus makin sedikit','Berulang sampai mobil kualitas tinggi yang terjual <b>nol</b>'),
+ N('Asuransi','Pembeli lebih tahu risiko dirinya &amp; punya <i>willingness to pay</i> (WTP)','Premi didasarkan rata-rata biaya berobat populasi','Yang membeli polis = berisiko sakit tinggi; orang sehat WTP &lt; premi → tak membeli','Perusahaan asuransi rugi = <b>adverse selection</b>')),
+N('Signaling &amp; Screening',
+ N('Konsep','Dua cara mengungkap <i>private information</i> agar diketahui pihak lain','<b>Signaling</b>: diungkap oleh pemilik informasi','<b>Screening</b>: diungkap oleh pihak lain'),
+ N('Contoh','Signaling: iklan &amp; garansi (sinyal kualitas), pendidikan (sinyal produktivitas)','Screening: asuransi bertanya ke calon pemegang polis; teknisi cek mobil'),
+ N('Pendidikan sebagai Signaling','Perusahaan sulit tahu produktivitas calon pegawai (info asimetris)','Syarat: lama pendidikan tak banyak dipengaruhi kondisi ekonomi/biaya','Cost = biaya, <i>opportunity cost</i>, <i>physic cost</i>; <i>basic schooling</i> (wajib) = 0','Produktivitas tinggi → cost <i>advanced degree</i> lebih rendah'),
+ N('Contoh Kasus','Cost <i>advanced degree</i>: produktivitas tinggi 10.000; rendah 40.000. Upah: <i>basic</i> 20.000; <i>advanced</i> 40.000','Produktivitas tinggi: basic 20.000 vs <b>advanced 30.000</b> → ambil <i>advanced</i>','Produktivitas rendah: <b>basic 20.000</b> vs advanced 0 → ambil <i>basic</i>','Kesimpulan: gelar lanjut jadi alat perusahaan menilai produktivitas')),
+N('Agency Problem',
+ N('Konsep','<i>Agent</i> bertindak untuk kepentingan <i>principal</i>','Manajer = agent, pemilik/pemegang saham = principal; pekerja = agent, manajer = principal','Agent lebih tahu tindakannya → cenderung memperkaya diri = <b>agency problem</b>'),
+ N('Sektor Swasta','Manajer cenderung mengamankan diri jangka pendek, bukan kinerja berkelanjutan','Tetap terikat <i>stockholders</i>: bisa diberhentikan, pengawasan lebih baik, kinerja baik naikkan posisi di pasar manajer'),
+ N('Sektor Publik','Pemerintah lebih tahu informasi daripada legislatif','Tetap terikat tujuan bersama: <i>trust</i> publik berharga, kinerja baik naikkan posisi, pengawasan legislatif makin baik'),
+ N('Insentif 1: Bonus','Cost effort: rendah 0, tinggi $10.000; revenue rendah 10.000/20.000, tinggi 20.000/40.000 (bad/good luck 50:50)','Gaji tetap 0 → pekerja pilih <i>low effort</i>; profit perusahaan <b>$15.000</b>','Bonus $24.000 jika revenue $40.000 → payoff <i>high effort</i> = 50% × 24.000 − 10.000 = <b>$2.000</b>','Pekerja pilih <i>high effort</i>; profit = 30.000 − 0,5 × 24.000 = <b>$18.000</b> (&gt; 15.000)'),
+ N('Insentif 2: Revenue Sharing','Revenue &gt; $18.000 → tambahan upah = revenue − 18.000; jika ≤ 18.000 → nol','<i>Low effort</i>: 0,5 × (20.000 − 18.000) = <b>$1.000</b>','<i>High effort</i>: 0,5 × 2.000 + 0,5 × 22.000 − 10.000 = <b>$2.000</b>','Pekerja pilih <i>high effort</i>; <i>expected profit</i> = 30.000 − 12.000 = <b>$18.000</b>')),
+N('Moral Hazard',
+ N('Konsep','<i>Hidden action</i>: perilaku tak terobservasi pihak lain','<b>Moral hazard</b>: tindakan tersembunyi merugikan pihak lain, terutama pembayaran lebih besar dari seharusnya'),
+ N('Contoh','Pemegang polis kesehatan lebih banyak berobat (yang tak perlu)','Pemegang asuransi kendaraan kurang hati-hati saat berkendara/menyimpan mobil','Pekerja malas-malasan saat tak dimonitor','<i>Agency problem</i> adalah contoh lain moral hazard'),
+ N('Kasus: Asuransi Mobil','Asuransi $0,5/mil; MC per mil selain asuransi $1 → MC total $1,5 → mengemudi <b>100 mil/minggu</b>','Jarak tak bisa dimonitor &amp; premi tetap → MC turun ke $1 → mengemudi 140 mil/minggu (grafik)','Insentif berkendara lebih jauh → peluang kecelakaan naik → perusahaan asuransi rugi'),
+ N('Cara Mengurangi','<b>Deductible</b>: pemegang polis menanggung biaya tertentu dulu, baru asuransi membayar','<b>Copay</b>: pembayaran dibagi antara pemegang polis &amp; asuransi','Pengawasan, perbaikan gaji &amp; bonus sesuai kinerja (untuk <i>agency problem</i>)')));
+(function a(n,p,d,i){n.p=p;n.d=d;n.id=p?p.id+'.'+i:'r';n.hu=d==1?HUE[i]:p?p.hu:0;n.c.forEach((c,j)=>a(c,n,d+1,j))})(root,null,0,0);
+const all=(f,n=root)=>{f(n);n.c.forEach(c=>all(f,c))};
+let S={};try{S=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+all(n=>{n.o=!n.d||!!(Array.isArray(S.o)&&S.o.includes(n.id))});
+const v=document.getElementById('v'),wd=document.getElementById('wd'),es=document.getElementById('es'),pat=document.getElementById('p');
+const cam={x:0,y:0,k:1,tx:0,ty:0,tk:1},XS=[0];for(let i=1;i<4;i++)XS[i]=XS[i-1]+WS[i-1]+70;
+const g=n=>n.d>1?8:16;
+function save(){try{const o=[];all(n=>{n.o&&o.push(n.id)});localStorage.setItem(KEY,JSON.stringify({o}))}catch(e){}}
+function ui(n){if(!n.el)return;const b=n.el.querySelector('.b');if(b)b.textContent=n.o?'−':n.c.length}
+function mk(n,p){
+ const e=document.createElement('div');e.className='n d'+n.d;
+ e.style.cssText=`width:${WS[n.d]}px;z-index:${9-n.d};--hu:${n.hu}`;
+ e.innerHTML=n.t+(n.c.length?`<i class="b">${n.o?'−':n.c.length}</i>`:'');
+ e._n=n;n.el=e;wd.appendChild(e);n.H=e.offsetHeight;n.x=p?p.x:0;n.y=p?p.y:0;n.a=0;
+ if(p){const s=document.createElementNS(NS,'path');s.setAttribute('class','w'+n.d);s.style.stroke=`hsl(${n.hu} 65% 55%)`;s.style.opacity=0;es.appendChild(s);n.ed=s}
+}
+function sh(n){const k=n.o?n.c:[];let s=0;k.forEach(c=>s+=sh(c));if(k.length)s+=g(n)*(k.length-1);return n.S=Math.max(n.H,s)}
+function pl(n,t){n.tx=XS[n.d];n.ty=t+n.S/2;const k=n.o?n.c:[];if(!k.length)return;let s=g(n)*(k.length-1);k.forEach(c=>s+=c.S);let y=t+(n.S-s)/2;k.forEach(c=>{pl(c,y);y+=c.S+g(n)})}
+function upd(first){
+ (function m(n,p,vis){n.v=vis;if(vis&&!n.el)mk(n,p);n.c.forEach(c=>m(c,n,vis&&n.o))})(root,null,true);
+ sh(root);pl(root,0);
+ (function h(n,p){if(p&&!n.v&&n.el){n.tx=p.tx;n.ty=p.ty}n.c.forEach(c=>h(c,n))})(root,null);
+ if(first)all(n=>{if(n.el){n.x=root.tx;n.y=root.ty}});
+ save();run()
+}
+function draw(n){
+ n.el.style.transform=`translate(${n.x}px,${n.y-n.H/2}px) scale(${.6+.4*n.a})`;n.el.style.opacity=n.a;
+ if(n.ed){const p=n.p,x1=p.x+WS[p.d],x2=n.x,d=Math.max(24,Math.abs(x2-x1)*.5);
+  n.ed.setAttribute('d',`M${x1} ${p.y}C${x1+d} ${p.y} ${x2-d} ${n.y} ${x2} ${n.y}`);n.ed.style.opacity=n.a}
+}
+function ac(){wd.style.transform=`translate(${cam.x}px,${cam.y}px) scale(${cam.k})`;pat.setAttribute('patternTransform',`translate(${cam.x} ${cam.y}) scale(${cam.k})`)}
+let raf=0,last=0;
+const run=()=>{if(!raf){last=performance.now();raf=requestAnimationFrame(tick)}};
+function tick(t){
+ const f=1-Math.exp(-Math.min(.05,(t-last)/1e3)*11);last=t;let b=0;
+ all(n=>{if(!n.el)return;
+  const dx=n.tx-n.x,dy=n.ty-n.y,da=(n.v?1:0)-n.a;
+  if(Math.abs(dx)+Math.abs(dy)+Math.abs(da)*50>.4){n.x+=dx*f;n.y+=dy*f;n.a+=da*f;b=1}else{n.x=n.tx;n.y=n.ty;n.a=n.v?1:0}
+  if(!n.v&&n.a<.03){n.el.remove();n.ed&&n.ed.remove();n.el=n.ed=null;return}
+  draw(n)});
+ const c=cam,cx=c.tx-c.x,cy=c.ty-c.y,ck=c.tk-c.k;
+ if(Math.abs(cx)+Math.abs(cy)+Math.abs(ck)*200>.3){c.x+=cx*f;c.y+=cy*f;c.k+=ck*f;b=1}else{c.x=c.tx;c.y=c.ty;c.k=c.tk}
+ ac();raf=b?requestAnimationFrame(tick):0
+}
+function fit(anim){
+ let a=1e9,b=1e9,c=-1e9,d=-1e9;
+ all(n=>{if(n.v){a=Math.min(a,n.tx);c=Math.max(c,n.tx+WS[n.d]);b=Math.min(b,n.ty-n.H/2);d=Math.max(d,n.ty+n.H/2)}});
+ const w=v.clientWidth,h=v.clientHeight,k=Math.max(.2,Math.min(1.1,(w-50)/(c-a),(h-120)/(d-b)));
+ cam.tk=k;cam.tx=(w-(c-a)*k)/2-a*k;cam.ty=(h-(d-b)*k)/2-b*k+14;
+ if(!anim){cam.x=cam.tx;cam.y=cam.ty;cam.k=k;ac()}else run()
+}
+function reveal(n){
+ const w=v.clientWidth,h=v.clientHeight,k=cam.tk,P=20;let a=n.tx,c=n.tx+WS[n.d],b=n.ty-n.H/2,d=n.ty+n.H/2;
+ n.c.forEach(m=>{if(m.v){a=Math.min(a,m.tx);c=Math.max(c,m.tx+WS[m.d]);b=Math.min(b,m.ty-m.H/2);d=Math.max(d,m.ty+m.H/2)}});
+ let dx=0,dy=0,sx=a*k+cam.tx,ex=c*k+cam.tx,sy=b*k+cam.ty,ey=d*k+cam.ty;
+ if(ex>w-P)dx=w-P-ex;if(sx+dx<P)dx=P-sx;if(ey>h-P)dy=h-P-ey;if(sy+dy<56)dy=56-sy;
+ cam.tx+=dx;cam.ty+=dy;run()
+}
+function click(n){
+ if(!n.v)return;const oy=n.ty;
+ if(n.c.length){n.o=!n.o;upd();cam.ty-=(n.ty-oy)*cam.tk;if(n.o)reveal(n)}else save();
+ ui(n);n.el.classList.remove('f');void n.el.offsetWidth;n.el.classList.add('f')
+}
+function zoomAt(cx,cy,f){const k=Math.min(2.5,Math.max(.2,cam.k*f)),r=k/cam.k;cam.x=cx-(cx-cam.x)*r;cam.y=cy-(cy-cam.y)*r;cam.k=k;cam.tx=cam.x;cam.ty=cam.y;cam.tk=k;ac()}
+const P=new Map();let dn=null,mv=0;
+const cd=()=>{const a=[...P.values()];return[(a[0][0]+a[1][0])/2,(a[0][1]+a[1][1])/2,Math.hypot(a[0][0]-a[1][0],a[0][1]-a[1][1])||1]};
+v.addEventListener('pointerdown',e=>{if(e.target.closest('.pl'))return;v.setPointerCapture(e.pointerId);
+ cam.tx=cam.x;cam.ty=cam.y;cam.tk=cam.k;P.set(e.pointerId,[e.clientX,e.clientY]);dn=P.size==1?e.target.closest('.n'):null;mv=0});
+v.addEventListener('pointermove',e=>{const o=P.get(e.pointerId);if(!o)return;
+ if(P.size>1){const[px,py,pd]=cd();P.set(e.pointerId,[e.clientX,e.clientY]);const[qx,qy,qd]=cd(),r=v.getBoundingClientRect();
+  cam.x+=qx-px;cam.y+=qy-py;zoomAt(qx-r.left,qy-r.top,qd/pd);mv=99}
+ else{const dx=e.clientX-o[0],dy=e.clientY-o[1];P.set(e.pointerId,[e.clientX,e.clientY]);mv+=Math.abs(dx)+Math.abs(dy);
+  if(mv>5){cam.x+=dx;cam.y+=dy;cam.tx=cam.x;cam.ty=cam.y;ac()}}});
+const up=e=>{if(!P.has(e.pointerId))return;P.delete(e.pointerId);if(!P.size&&mv<6&&dn&&e.type=='pointerup')click(dn._n);if(!P.size)dn=null};
+v.addEventListener('pointerup',up);v.addEventListener('pointercancel',up);
+v.addEventListener('wheel',e=>{e.preventDefault();const r=v.getBoundingClientRect();zoomAt(e.clientX-r.left,e.clientY-r.top,Math.exp(-e.deltaY*(e.ctrlKey?.01:.0018)))},{passive:false});
+document.getElementById('z').onclick=e=>{const z=e.target.dataset.z;if(z==null)return;
+ if(+z){const w=v.clientWidth/2,h=v.clientHeight/2,k=Math.min(2.5,Math.max(.2,cam.tk*z)),r=k/cam.tk;cam.tx=w-(w-cam.tx)*r;cam.ty=h-(h-cam.ty)*r;cam.tk=k;run()}else fit(1)};
+document.getElementById('rs').onclick=()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme=='dark'?'light':'dark'};
+upd(true);fit(false);
+</script>
+</body>
+</html>
